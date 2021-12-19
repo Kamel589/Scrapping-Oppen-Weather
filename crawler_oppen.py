@@ -49,7 +49,7 @@ def data_output(data):
      
 # Enregistrement dans un fichier csv 
 def WriteCSV(data):
-    with open('weatherOpenMap.csv', 'a') as f:  
+    with open('weatherOpenMap.csv', 'w') as f:  
         w = csv.DictWriter(f, data.keys())
         w.writeheader()
         w.writerow(data)
@@ -94,30 +94,32 @@ if __name__ == '__main__':
             if call == 60:
                 print ('Attendre une minute')
                 time.sleep(60)
-                        
-            city_id= idv
-                                #Generation de l url
-            print(colored('Generation de l url ', 'red',attrs=['bold']))
-            url=url_builder(city_id,city_name,country)
-                                #Invocation du API afin de recuperer les données
-            print(colored('Invocation du API afin de recuperer les données', 'red',attrs=['bold']))
-            data=data_fetch(url)
-                                #Formatage des données
-            print(colored('Formatage des donnée', 'red',attrs=['bold']))
-            data_orgnized=data_organizer(data)
-                                #Affichage de données
-            print(colored('Affichage de données ', 'red',attrs=['bold']))
-            data_output(data_orgnized)
-            print(colored('Enregistrement des données à dans un fichier CSV ', 'green',attrs=['bold']))
-            WriteCSV(data_orgnized)  
-            print(colored('Lecture des données à partir un fichier CSV ', 'green',attrs=['bold']))
-                           #Lecture des données a partir de fichier CSV 
-            data=ReadCSV()
-            print(colored('Affichage des données lues de CSV ', 'green',attrs=['bold']))
-                           #Affichage des données 
-            data_output(data)
-            compteur += 1
-            call = call + 1
+                call = 0
+            else :
+                city_id= idv 
+                                    #Generation de l url
+                print(colored('Generation de l url ', 'red',attrs=['bold']))
+                url=url_builder(city_id,city_name,country)
+                                    #Invocation du API afin de recuperer les données
+                print(colored('Invocation du API afin de recuperer les données', 'red',attrs=['bold']))
+                data=data_fetch(url)
+                                    #Formatage des données
+                print(colored('Formatage des donnée', 'red',attrs=['bold']))
+                data_orgnized=data_organizer(data)
+                                    #Affichage de données
+                print(colored('Affichage de données ', 'red',attrs=['bold']))
+                data_output(data_orgnized)
+                print(colored('Enregistrement des données à dans un fichier CSV ', 'green',attrs=['bold']))
+                WriteCSV(data_orgnized)  
+                print(colored('Lecture des données à partir un fichier CSV ', 'green',attrs=['bold']))
+                               #Lecture des données a partir de fichier CSV 
+                data=ReadCSV()
+                print(colored('Affichage des données lues de CSV ', 'green',attrs=['bold']))
+                               #Affichage des données 
+                data_output(data)
+                compteur += 1
+                call = call + 1
+           
            
         
     except IOError:
