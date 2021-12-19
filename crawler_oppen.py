@@ -91,7 +91,7 @@ if __name__ == '__main__':
         compteur = 0
         call = 0
         for idv in v :
-            if call == 60 :
+            if call == 60:
                 print ('Attendre une minute')
                 time.sleep(60)
                         
