@@ -125,7 +125,7 @@ if __name__ == '__main__':
     except IOError:
         print('no internet')
             
-print('Le nombre de villes affichées est de : '+ str(compteur))
+print('Le nombre de villes parcourues est de : '+ str(compteur))
         
 
 
